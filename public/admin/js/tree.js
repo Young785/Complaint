@@ -1,20 +1,20 @@
-var TreeView = function () {
+var TreeView = function() {
 
     return {
         //main function to initiate the module
-        init: function () {
+        init: function() {
 
-            var DataSourceTree = function (options) {
-                this._data  = options.data;
+            var DataSourceTree = function(options) {
+                this._data = options.data;
                 this._delay = options.delay;
             };
 
             DataSourceTree.prototype = {
 
-                data: function (options, callback) {
+                data: function(options, callback) {
                     var self = this;
 
-                    setTimeout(function () {
+                    setTimeout(function() {
                         var data = $.extend(true, [], self._data);
 
                         callback({ data: data });

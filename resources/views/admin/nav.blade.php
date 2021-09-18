@@ -38,29 +38,27 @@
             </li>
             <div class="nav notify-row" id="" style="margin: 0;">
                 <!--  notification start -->
-                {{-- <ul class="nav top-menu">
+                <ul class="nav top-menu">
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle toggle-right-box" href="#">
+                        <a data-toggle="dropdown" class="dropdown-toggle toggle-right-box" onclick="markRead()" href="#">
                             <i class="fa fa-envelope-o" style="padding: 8px;"></i>
-                            <span class="badge bg-important">1</span>
+                            @php
+                                $id = Auth::user()->id;
+                                $user = App\Models\User::find($id);
+                        
+                                $notification = $user->notifications->take(4);
+                            @endphp
+                            <span class="badge bg-important">{{ count(Auth::user()->unreadNotifications) }}</span>
                         </a>
                         <ul class="dropdown-menu extended inbox">
                             <li>
-                                <p class="red">You have 4 Mails</p>
+                                <p class="red">You have {{ count(Auth::user()->unreadNotifications) }} Mails</p>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="images/avatar-mini.jpg"></span>
-                                        <span class="subject">
-                                        <span class="from">Jonathan Smith</span>
-                                        <span class="time">Just now</span>
-                                        </span>
-                                        <span class="message">
-                                            Hello, this is an example msg.
-                                        </span>
-                                </a>
-                            </li>
+                            @foreach ($notification as $item)
+                                @include('layouts.notifications.'.class_basename($item->type))
+                            @endforeach
+                            
                             <li>
                                 <a href="/complaint">See all complaints</a>
                             </li>
@@ -70,7 +68,7 @@
                     
                     
                     
-                </ul> --}}
+                </ul>
                 <!--  notification end -->
             </div>
         </ul>

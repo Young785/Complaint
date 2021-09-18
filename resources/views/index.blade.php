@@ -203,7 +203,7 @@
                         <div class="col-lg-5 me-auto ms-auto col-md-6">
                             <div class="business-solution-form-wrap me-auto ms-auto">
                                 @if (session()->has('msg'))
-                                    <div class="btn btn-success"> Your complaint has been sent, We will get back to you soon!</div>
+                                    <div class="alert btn-success"> Your complaint has been sent, We will get back to you soon!</div>
                                 @endif
                                 <div class="contact-title text-center section-space--mb_40">
                                     <h5 class="mb-10">Make Complain</h5>

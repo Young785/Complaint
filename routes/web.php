@@ -28,8 +28,21 @@ Route::get('/conadmin', [App\Http\Controllers\AdminController::class, 'index'])-
 Route::get('/conadmin/complaint', [App\Http\Controllers\AdminController::class, 'comp'])->name('comp')->middleware('auth');
 Route::get('/conadmin/delete/{id}', [App\Http\Controllers\AdminController::class, 'delete'])->name('delete')->middleware('auth');
 Route::get('/conadmin/account', [App\Http\Controllers\AdminController::class, 'account'])->name('account')->middleware('auth');
+Route::get('/conadmin/complaint/{id}', [App\Http\Controllers\AdminController::class, 'oneComp'])->name('oneComp')->middleware('auth');
 
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/conadmin/login');
+});
+
+// Route::get('/test', function () {
+//         $notifications = Auth::user()->unreadNotifications;
+
+//         foreach ($notifications as $notification) {
+//             dd($notification->data['name']);
+//         }
+//     });
+Route::get('/markAsRead', function () {
+    auth()->user()->unreadNotifications->markAsRead();
+    return redirect("/");
 });

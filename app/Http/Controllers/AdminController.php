@@ -49,4 +49,10 @@ class AdminController extends Controller
         $user = Auth::user();
         return view('admin.account',compact('user'));
     }
+    public function oneComp($id)
+    {
+        $user = Auth::user();
+        $comp = Complaint::where('id', $id)->first();
+        return view('admin.complain',compact('user', 'comp'));
+    }
 }

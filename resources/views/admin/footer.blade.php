@@ -52,9 +52,20 @@
 <script src="/admin/js/flot-chart/jquery.flot.resize.js"></script>
 <script src="/admin/js/flot-chart/jquery.flot.pie.resize.js"></script>
 
-
 <!--common script init for all pages-->
 <script src="/admin/js/scripts.js"></script>
+
+<script>
+    function markRead() {
+        $.get("/markAsRead")
+    }
+
+    setTimeout(() => {
+        var alertId = document.getElementById('remove')
+        alertId.classList.add('modal')
+    }, 3000);
+
+</script>
 
 </body>
 </html>
